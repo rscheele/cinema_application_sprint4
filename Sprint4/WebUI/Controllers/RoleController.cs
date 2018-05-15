@@ -41,7 +41,7 @@ namespace WebUI.Controllers
             {
                 list.Add(new RoleViewModel(role));
             }
-            return View();
+            return View(list);
         }
 
         public ActionResult Create()
