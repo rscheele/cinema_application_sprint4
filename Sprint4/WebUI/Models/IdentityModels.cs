@@ -17,6 +17,11 @@ namespace WebUI.Models
             return userIdentity;
         }
     }
+    public class ApplicationRole : IdentityRole
+    {
+        public ApplicationRole() : base() { }
+        public ApplicationRole(string roleName) : base(roleName) { }
+    }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

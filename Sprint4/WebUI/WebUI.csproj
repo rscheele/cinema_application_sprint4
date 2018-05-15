@@ -321,6 +321,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PinController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreditcardModel.cs" />
     <Compile Include="Controllers\SpecialsController.cs" />
@@ -341,6 +342,7 @@
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Reservation.cs" />
+    <Compile Include="Models\RoleViewModel.cs" />
     <Compile Include="Models\SeatLayout.cs" />
     <Compile Include="Models\TempTicketModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -419,6 +421,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Role\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">
