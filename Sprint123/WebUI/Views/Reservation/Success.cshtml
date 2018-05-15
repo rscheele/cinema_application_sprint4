@@ -1,0 +1,19 @@
+﻿@model WebUI.Models.Reservation
+
+@{
+    ViewBag.Title = "Success";
+}
+<body>
+    <div class="form-horizontal">
+        <br />
+        <br />
+        <h1><b>De bestelling is geslaagd!</b></h1><br />
+        <b>Je reserveringscode is @Html.DisplayFor(x => Model.reservationID).</b><br /><br />
+        <b>In je mailbox heb je deze code ook ontvangen.</b><br /><br />
+        @if (Model.Paid == true)
+    {
+        <button type="button" id="oneclick" class="btn btn-danger" onclick="location.href='@Url.Action("PrintSessionTickets","Reservation", new { reservationID = Model.reservationID })';disableButton(this)">Print Tickets</button>
+}
+    </div>
+</body>
+

@@ -1,0 +1,184 @@
+﻿@model IEnumerable<Domain.Entities.Show>
+
+@{
+    ViewBag.Title = "Overzicht films";
+}
+<div class="text-center">
+    <br />
+    <button class="btn btn-danger" type="button" onclick="location.href = '@Url.Action("Reservation", "Reservation")'">Haal hier uw reservering op</button> <h2>Verwachte films:</h2>
+</div>
+<div class="row">
+    <div class="col-sm"></div>
+    <div class="col-sm">
+        <div class="text-center" style="color: brown; max-width:550px;">
+            <div id="verwachtefilms" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <a href="@Html.Raw(ViewBag.trailer1)"><img class="d-block w-10" src="~/Content/pacific-rim-uprising.jpg" alt="First slide"></a>
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5 style="color: ghostwhite; background-color: black;">Pacific Rim - Uprising</h5>
+                            <p style="color: ghostwhite; background-color: black;">De nieuwe spectaculaire 3D-actiefilm PACIFIC RIM UPRISING.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="@Html.Raw(ViewBag.trailer2)"><img class="d-block w-10" src="~/Content/darkest-hour.jpg" alt="Second slide"></a>
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5 style="color: ghostwhite; background-color: black;">Darkest Hour</h5>
+                            <p style="color: ghostwhite; background-color: black;">De nieuwe spectaculaire film over Churchill gespeeld door Gary Oldman.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="@Html.Raw(ViewBag.trailer3)"><img class="d-block w-10" src="~/Content/the-shape-of-water.jpg" alt="Third slide"></a>
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5 style="color: ghostwhite; background-color: black;">Pacific Rim - Uprising</h5>
+                            <p style="color: ghostwhite; background-color: black;">De oscarwinnende film over een magisch zeewezen.</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm"></div>
+</div>
+    
+    <h2>Deze Week in de bioscoop:</h2>
+    <button class="btn btn-danger" type='button' onclick="location.href = '@Url.Action("Overview", "UpcomingShow", new {locationid = ViewBag.locid}, null)'">Toon alle films</button>
+    @*<div class="tooltip">genre<span class="tooltiptext">actie, misdaad, historisch...</span></div>*@
+    <div class="container">
+        @using (Html.BeginForm())
+         {
+        <div class="row">
+            <p>Zoek op film, genre, acteur of regisseur:<br>@Html.TextBox("SearchString") </p>
+        </div>
+        <div class="row">
+            <p>Zoek op datum: <br> @Html.TextBox("Start", null, new { @class = "date-picker" }) </p>
+        </div>
+        <div class="row">
+            <p>
+                Zoek op leeftijd:<br>
+                @Html.RadioButton("Age", 0) <span>AL</span>
+                @Html.RadioButton("Age", 4) <span>4</span>
+                @Html.RadioButton("Age", 6) <span>6</span>
+                @Html.RadioButton("Age", 12) <span>12</span>
+                @Html.RadioButton("Age", 16) <span>16+</span><br>
+                <input type="submit" class="btn btn-danger" value="Zoek films" />
+            </p>
+        </div>
+         }
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                <!--Image-->
+            </th>
+            <th>
+                <p>Naam film:</p>
+            </th>
+            <th>
+                <p>3D:</p>
+            </th>
+            <th>
+                <p>Taal:</p>
+            </th>
+            <th>
+                <p>Ondertiteling:</p>
+            </th>
+            <th>
+                <p>Lengte:</p>
+            </th>
+            <th>
+                <p>Zaal:</p>
+            </th>
+            <th>
+                <p>Leeftijd:</p>
+            </th>
+            <th>
+                <p>Genre:</p>
+            </th>
+            <th>
+                <p>Aanvangstijd:</p>
+            </th>
+            <th>
+                <p>Eindtijd:</p>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="data:image;base64,@System.Convert.ToBase64String(item.Movie.Image)" width="60" height="80" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Movie.Name)
+                </td>
+                <td>
+                    @if (item.Movie.Is3D == true)
+                    {
+                        <p>3D</p>
+                    }
+                    else
+                    {
+                        <p></p>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Movie.Language)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Movie.LanguageSub)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Movie.Length)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Room.RoomID)
+                </td>
+                <td>
+                    @if (item.Movie.Age >= 16)
+                    {
+                        <img src="~/Content/kijkwijzer-16.png" alt="16" height="25" width="25" />
+                    }
+                    else if (item.Movie.Age == 12)
+                    {
+                        <img src="~/Content/kijkwijzer-12.png" alt="12" height="25" width="25" />
+                    }
+                    else if (item.Movie.Age == 6)
+                    {
+                        <img src="~/Content/kijkwijzer-6.png" alt="6" height="25" width="25" />
+                    }
+                    else if (item.Movie.Age < 6)
+                    {
+                        <img src="~/Content/kijkwijzer-AL.png" alt="AL" height="25" width="25" />
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Movie.Genre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BeginTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndTime)
+                </td>
+                <td>
+                    <button class="btn btn-danger" type="button" onclick="location.href = '@Url.Action("ShowDetails", "UpcomingShow", new { id = item.ShowID}, null)'">Bekijk</button>
+                </td>
+            </tr>
+        }
+
+    </table>

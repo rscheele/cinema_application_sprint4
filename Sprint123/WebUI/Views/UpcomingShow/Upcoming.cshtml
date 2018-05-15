@@ -1,0 +1,145 @@
+﻿@model IEnumerable<Domain.Entities.Show>
+
+@{
+    ViewBag.Title = "Overzicht van eerstkomende films";
+}
+<div class="text-center">
+    <p>
+        <h2>Het aanbod van eerstkomende films in @ViewBag.Location</h2>
+        <h3>Tijd: @ViewBag.DayOfWeek  @ViewBag.HourOfDay:@ViewBag.MinuteOfDay</h3>
+        <button class="btn btn-danger" type="button" onclick="location.href = '@Url.Action("Reservation", "Reservation")'">Reservering ophalen</button>
+    <hr />
+    </p>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            <p>Naam film:</p>
+        </th>
+        <th>
+            <p>3D:</p>
+        </th>
+        <th>
+            <p>Taal:</p>
+        </th>
+        <th>
+            <p>Ondertiteling:</p>
+        </th>
+        <th>
+            <p>Lengte:</p>
+        </th>
+        <th>
+            <p>Zaal:</p>
+        </th>
+        <th>
+            <p>Leeftijd:</p>
+        </th>
+        <th>
+            <p>Aanvangstijd:</p>
+        </th>
+        <th>
+            <p>Eindtijd:</p>
+        </th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>
+            <p>? - &euro;2,50 korting!</p>
+        </td>
+        <td>
+            @if (@ViewBag.threed == false)
+             {
+             <p>3D</p>
+             }else {
+             <p></p>
+             }
+        </td>
+        <td>
+            <p>@ViewBag.language</p>
+        </td>
+        <td>
+            <p>@ViewBag.sublanguage</p>
+        </td>
+        <td>
+            <p>@ViewBag.length</p>
+        </td>
+        <td>
+            <p>@ViewBag.room</p>
+        </td>
+        <td>
+            @if (@ViewBag.age == 16)
+             {
+             <img src="~/Content/kijkwijzer-16.png" alt="16" height="25" width="25"/>
+             }else if(@ViewBag.age == 12) {
+             <img src="~/Content/kijkwijzer-12.png" alt="12" height="25" width="25"/>
+             }else if(@ViewBag.age == 6)
+             {
+             <img src="~/Content/kijkwijzer-6.png" alt="6" height="25" width="25"/>
+             }else if (@ViewBag.age < 6)
+             {
+             <img src="~/Content/kijkwijzer-AL.png" alt="AL" height="25" width="25"/>
+             }
+        </td>
+        <td>
+            <p>@ViewBag.begintime</p>
+        </td>
+        <td>
+            <p>@ViewBag.endtime</p>
+        </td>
+        <td>
+            <button class="btn btn-danger" type="button" onclick="location.href = '@Url.Action("OrderMovie", "UpcomingShow", new { id = ViewBag.showid, secret = true}, null)'">Bestel</button>
+        </td>
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Movie.Name)
+        </td>
+        <td>
+            @if (item.Movie.Is3D == true)
+             {
+             <p>3D</p>
+             }else {
+             <p></p>
+             }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Movie.Language)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Movie.LanguageSub)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Movie.Length)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Room.RoomID)
+        </td>
+        <td>
+            @if (item.Movie.Age == 16)
+             {
+             <img src="~/Content/kijkwijzer-16.png" alt="16" height="25" width="25"/>
+             }else if(item.Movie.Age == 12) {
+             <img src="~/Content/kijkwijzer-12.png" alt="12" height="25" width="25"/>
+             }else if(item.Movie.Age == 6)
+             {
+             <img src="~/Content/kijkwijzer-6.png" alt="6" height="25" width="25"/>
+             }else if (item.Movie.Age < 6)
+             {
+             <img src="~/Content/kijkwijzer-AL.png" alt="AL" height="25" width="25"/>
+             }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BeginTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndTime)
+        </td>
+        <td>
+            <button class="btn btn-danger" type="button" onclick="location.href = '@Url.Action("OrderMovie", "UpcomingShow", new { id = item.ShowID, secret = false}, null)'">Bestel</button>
+        </td>
+    </tr>
+}
+
+</table>
