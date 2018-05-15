@@ -1,2 +1,0 @@
-C:\Users\Rodi\Source\Repos\Sprint123\Sprint123\UnitTests\obj\Debug\UnitTests.csprojResolveAssemblyReference.cache
-C:\Users\Rodi\Source\Repos\Sprint123\Sprint123\UnitTests\obj\Debug\UnitTests.csproj.CoreCompileInputs.cache
