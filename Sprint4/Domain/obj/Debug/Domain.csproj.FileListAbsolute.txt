@@ -81,3 +81,7 @@ F:\Sprint4\Sprint4\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
 F:\Sprint4\Sprint4\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
 F:\Sprint4\Sprint4\Domain\obj\Debug\Domain.dll
 F:\Sprint4\Sprint4\Domain\obj\Debug\Domain.pdb
+F:\Sprint4\Sprint4\Domain\bin\Debug\System.Web.Optimization.dll
+F:\Sprint4\Sprint4\Domain\bin\Debug\System.Web.Optimization.xml
+F:\Sprint4\Sprint4\Domain\bin\Debug\Microsoft.Owin.Security.Google.dll
+F:\Sprint4\Sprint4\Domain\bin\Debug\Microsoft.Owin.Security.Google.xml
