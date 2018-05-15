@@ -34,5 +34,8 @@ namespace WebUI.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<WebUI.Models.RoleViewModel> RoleViewModels { get; set; }
+
     }
 }
