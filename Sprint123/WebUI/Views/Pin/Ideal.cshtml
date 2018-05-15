@@ -1,0 +1,19 @@
+﻿@model WebUI.Models.IdealModel
+
+@{
+    ViewBag.Title = "Ideal";
+}
+<br />
+<h2><b>Ideal betaling</b></h2><img src="~/Content/ideal.png" alt="Ideal" />
+<br />
+@using (Html.BeginForm("FinishIdeal", "Pin", new { reservationID = Model.reservationID, paytype = "ideal" }))
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Bank, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-7">
+                @Html.EnumDropDownListFor(b => b.Bank, Model.Bank)&nbsp;<button type="submit" class="btn btn-danger">Bevestig</button>
+            </div>
+        </div>
+    </div>
+ }

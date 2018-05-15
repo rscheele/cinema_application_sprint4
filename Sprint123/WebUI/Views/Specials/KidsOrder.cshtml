@@ -1,0 +1,36 @@
+﻿@model WebUI.Models.Order
+@{
+    ViewBag.Title = "Kinderfeestje bestellen";
+}
+
+<body>
+    <div class="text-center">
+        @*<p>*@
+        <br />
+        <h2>Je bestelt nu tickets voor @ViewBag.MovieName voor het kinderfeestje arrangement!</h2><br />
+        <p>Selecteer het aantal gewenste tickets.</p>
+        <b>Let op:</b><p>Bestel minimaal 1 en maximaal 10 tickets!</p>
+        <p style="color:red"><b>@ViewBag.SoldOut</b></p>
+        @*</p>*@
+        @using (Html.BeginForm())
+        {
+            <p style="display:none">Reservering ID: @Html.TextBoxFor(x => Model.ReservationID) Show ID: @Html.TextBoxFor(x => Model.ShowID) </p>
+            <table align="center" style="border-spacing: 10px; border-collapse: separate;">
+                <tr>
+                    <th scope="col">Type ticket</th>
+                    <th scope="col">Prijs</th>
+                    <th scope="col">Aantal</th>
+                </tr>
+                <tr>
+                    <td>Kinderen</td>
+                    <td>€14,45</td>
+                    <td>@Html.TextBox("KidsTickets", 0, new { @type = "number", @min = "0", @max = "10", @style = "width:50px" })</td>
+                </tr>
+            </table>
+            <input class="btn btn-danger" type="submit" value="Bestellen" />
+        }
+    </div>
+</body>
+
+
+

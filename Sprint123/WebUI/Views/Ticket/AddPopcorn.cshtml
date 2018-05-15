@@ -1,0 +1,65 @@
+﻿@model  List<WebUI.Models.TempTicketModel>
+
+@{
+    ViewBag.Title = "AddPopcorn";
+}
+
+<body>
+    <div class="text-center">
+        <p>
+        <h2>Voeg popcorn toe!</h2><br />
+        <p>Voor €5,- krijg je popcorn + fris! Los kost dit €6,-!</p>
+        @if (Model.FirstOrDefault().Is3D == true)
+        {
+            <p>Jullie film is een 3D film. Hiervoor is een 3D bril nodig, deze kost €2,-.</p>
+            <p>Kies bij welke tickets je popcorn en een 3D bril wilt toevoegen.</p>
+        }
+        @if (Model.FirstOrDefault().Is3D == false)
+        {
+            <p>Kies bij welke tickets je popcorn wilt toevoegen.</p>
+        }
+        </p>
+        @using (Html.BeginForm("AddPopcorn", "Ticket", FormMethod.Post))
+        {
+        <table align="center">
+            <tr>
+                <th scope="col">Ticket Nummer</th>
+                <th scope="col">Prijs</th>
+                <th scope="col">Type</th>
+                <th scope="col">Met popcorn</th>
+                @if (Model.FirstOrDefault().Is3D == true)
+                {
+                <th scope="col">Met 3D bril</th>
+                }
+            </tr>
+            @{ int j = 0;}
+            @for (int i = 0; i < Model.Count; i++)
+            {
+            j++;
+            <tr>
+                <td>
+                    @j <p style="display:none">@Html.TextBoxFor(x => Model[i].ReservationID)</p>
+                </td>
+                <td>
+                    €@Html.DisplayFor(x => Model[i].Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(x => Model[i].TicketType)
+                </td>
+                <td>
+                    @Html.CheckBoxFor(x => Model[i].Popcorn) + €5,-
+                </td>
+                @if (Model.FirstOrDefault().Is3D == true)
+                {
+                <td>
+                    @Html.CheckBoxFor(x => Model[i].Glasses) + €2,-
+                </td>
+                }
+            </tr>
+            }
+
+        </table> <br />
+        <input class="btn btn-danger" type="submit" value="Voeg toe!" />
+}
+    </div>
+</body>

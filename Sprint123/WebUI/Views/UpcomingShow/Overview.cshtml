@@ -1,0 +1,158 @@
+﻿@model IEnumerable<Domain.Entities.Show>
+
+@{
+    ViewBag.Title = "Overzicht films";
+}
+<div class="tooltip">
+    <p>genre</p>
+    <span class="tooltiptext">actie, misdaad, fantasie, kids of historisch</span>
+</div>
+<div class="text-center">
+    <br />
+    <h2>Binnenkort bij ons in de bioscoop:</h2>
+</div>
+@Html.Action("Expected")
+<div class="text-center">
+    <h2>Deze Week in de bioscoop:</h2>
+</div>
+<div class="container">
+    @using (Html.BeginForm("Dofilter", "UpcomingShow", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-sm-4">
+                <p>Zoek op film, <a href="#" data-toggle="tooltip" title="actie, fantasie, historisch, kids, misdaad of science fiction">genre</a>, acteur of regisseur:<br>@Html.TextBox("SearchString") </p>
+                @*<select id="Genre" name="Genre">
+                    <option value="">Selecteer een Genre...</option>
+                    <option value="actie">actie</option>
+                    <option value="fantasie">fantasie</option>
+                    <option value="historisch">historisch</option>
+                    <option value="kids">kids</option>
+                    <option value="misdaad">misdaad</option>
+                    <option value="science fiction">science fiction</option>
+                </select>*@
+            </div>
+            <div class="col-sm-4">
+                <p>Zoek op datum: <br> @Html.TextBox("Start", null, new { @class = "date-picker" }) </p>
+            </div>
+            <div class="col-sm-4">
+                <p>
+                    Zoek op leeftijd:<br>
+                    @Html.RadioButton("Age", 4) <span>AL</span>
+                    @Html.RadioButton("Age", 6) <span>6</span>
+                    @Html.RadioButton("Age", 12) <span>12</span>
+                    @Html.RadioButton("Age", 16) <span>16+</span><br>
+                </p>
+            </div>
+        </div>
+        <input type="submit" class="btn btn-danger" value="Zoek films" />
+        <button class="btn btn-danger" type='button' onclick="location.href = '@Url.Action("Overview", "UpcomingShow", new {locationid = ViewBag.locid}, null)'">Toon alle films</button>       
+    }
+</div>
+<table class="table">
+    <tr>
+        <th>
+            <!--Image-->
+        </th>
+        <th>
+            <p>Naam film:</p>
+        </th>
+        <th>
+            <p>3D:</p>
+        </th>
+        <th>
+            <p>Taal:</p>
+        </th>
+        <th>
+            <p>Ondertiteling:</p>
+        </th>
+        <th>
+            <p>Lengte:</p>
+        </th>
+        <th>
+            <p>Zaal:</p>
+        </th>
+        <th>
+            <p>Leeftijd:</p>
+        </th>
+        <th>
+            <p>Genre:</p>
+        </th>
+        <th>
+            <p>Aanvangstijd:</p>
+        </th>
+        <th>
+            <p>Eindtijd:</p>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="data:image;base64,@System.Convert.ToBase64String(item.Movie.Image)" width="60" height="80" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Movie.Name)
+            </td>
+            <td>
+                @if (item.Movie.Is3D == true)
+                {
+                    <p>3D</p>
+                }
+                else
+                {
+                    <p></p>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Movie.Language)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Movie.LanguageSub)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Movie.Length)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Room.RoomID)
+            </td>
+            <td>
+                @if (item.Movie.Age >= 16)
+                {
+                    <img src="~/Content/kijkwijzer-16.png" alt="16" height="25" width="25" />
+                }
+                else if (item.Movie.Age == 12)
+                {
+                    <img src="~/Content/kijkwijzer-12.png" alt="12" height="25" width="25" />
+                }
+                else if (item.Movie.Age == 6)
+                {
+                    <img src="~/Content/kijkwijzer-6.png" alt="6" height="25" width="25" />
+                }
+                else if (item.Movie.Age < 6)
+                {
+                    <img src="~/Content/kijkwijzer-AL.png" alt="AL" height="25" width="25" />
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Movie.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BeginTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndTime)
+            </td>
+            <td>
+                <button class="btn btn-danger" type="button" onclick="location.href = '@Url.Action("ShowDetails", "UpcomingShow", new { id = item.ShowID}, null)'">Bekijk</button>
+            </td>
+        </tr>
+    }
+
+</table>
+<script>
+    $(document).ready(function)(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>

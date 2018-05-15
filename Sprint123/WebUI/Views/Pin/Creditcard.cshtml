@@ -1,0 +1,26 @@
+﻿@model WebUI.Models.CreditcardModel
+
+@{
+    ViewBag.Title = "Creditcard";
+}
+<br />
+<img src="~/Content/visa.png" alt="Visa" style="width:80px; height:100px;" /><img src="~/Content/mastercard.png" alt="Mastercard" style="width:80px; height:90px;" />
+<h2><b>Creditcard betaling</b></h2>
+<br />
+@using (Html.BeginForm("FinishCredit", "Pin", new { reservationID = Model.reservationID, paytype = "credit" }))
+ {
+<div class="form-horizontal">
+ <div class="form-group">
+        <label>Creditcardnummer: </label><br>
+        @Html.EditorFor(m => m.Creditcard)
+        <p>@Model.Crediterror</p>
+        <label>Verloopdatum: </label><br>
+        @Html.EditorFor(m => m.ExpireDate, Model.ExpireDate)
+        <p>@Model.Expireerror</p>
+        <label>CVC: </label><br>
+        @Html.EditorFor(m => m.CVC)
+        <p>@Model.CVCerror</p>
+    </div>
+    <button type="submit" class="btn btn-danger">Bevestig</button>
+ </div>
+ }

@@ -1,0 +1,19 @@
+﻿@model WebUI.Models.EmailReservation
+
+@{
+    ViewBag.Title = "EmailReservation";
+}
+
+<body>
+    @using (Html.BeginForm())
+    {
+        <br />
+        <p><b>Jullie reserveringsnummer is @Html.DisplayFor(x => Model.ReservationID)</b></p><br />
+        <p>Voer je e&#45;mailadres in om de reservering te bevestigen!</p>
+        @Html.ValidationSummary()
+        <p>@Html.TextBoxFor(x => Model.EmailAdress, new { @class = "formcontrol" })</p>
+        <p>Ik wil graag de nieuwsbrief ontvangen!   @Html.CheckBoxFor(x => Model.NewsLetter)</p>
+        <input class="btn btn-danger" type="submit" value="Reserveer" />
+    }
+</body>
+

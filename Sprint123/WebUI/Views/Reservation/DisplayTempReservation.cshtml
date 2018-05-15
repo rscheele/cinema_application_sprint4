@@ -1,0 +1,81 @@
+﻿@model  IEnumerable<Domain.Entities.TempTicket>
+
+@{
+    ViewBag.Title = "DisplayTicket";
+}
+
+<body>
+    <div class="text-center">
+        <br />
+        <h2>Dit is jullie reservering!</h2><br />
+        <p>
+            Jullie hebben gereserveerd voor <b>@Html.DisplayFor(x => Model.First().Show.Movie.Name)</b><br />
+            @if (Model.FirstOrDefault().TicketType == "Ladies Night")
+        {
+            <div>Deze film is een Ladies Night special! (Ladies only!)</div><br />
+    }
+            Op datum @Html.DisplayFor(x => Model.First().Show.BeginTime.DayOfWeek) @Html.DisplayFor(x => Model.First().Show.BeginTime.Day)-@Html.DisplayFor(x => Model.First().Show.BeginTime.Month)-@Html.DisplayFor(x => Model.First().Show.BeginTime.Year)<br />
+            Deze film begint om @Html.DisplayFor(x => Model.First().Show.BeginTime.TimeOfDay)<br />
+            En eindigt om @Html.DisplayFor(x => Model.First().Show.EndTime.TimeOfDay)<br />
+            De film draait in <b>zaal @Html.DisplayFor(x => Model.First().Show.Room.RoomNumber)</b>
+        </p>
+        <table align="center">
+            <tr>
+                <th scope="col">TicketID</th>
+                <th scope="col">Prijs</th>
+                <th scope="col">Type</th>
+                <th scope="col">Popcorn inbegrepen?</th>
+                <th scope="col">Met 3D Bril?</th>
+                <th scope="col">Rijnummer</th>
+                <th scope="col">Stoelnummer</th>
+            </tr>
+            @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(x => item.ID)
+                </td>
+                <td>
+                    €@Html.DisplayFor(x => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(x => item.TicketType)
+                </td>
+                <td>
+                    @if (item.Popcorn == true)
+                {
+                    <p>Ja</p>
+            }
+            else
+            {
+                <p>Nee</p>
+        }
+                </td>
+                <td>
+                    @if (item.Glasses == true)
+                {
+                    <p>Ja</p>
+            }
+            else
+            {
+                <p>Nee</p>
+        }
+                </td>
+                <td>
+                    @Html.DisplayFor(x => item.RowNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(x => item.SeatNumber)
+                </td>
+            </tr>
+    }
+        </table>
+        <br />
+        <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("Pay", "Pin", new { reservationID = Model.FirstOrDefault().ReservationID, paytype = ""})'">Naar betalen met Pin</button>
+        <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("Pay", "Pin", new { reservationID = Model.FirstOrDefault().ReservationID, paytype = "ideal"})'">Naar betalen met Ideal</button>
+        <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("Pay", "Pin", new { reservationID = Model.FirstOrDefault().ReservationID, paytype = "credit" })'">Naar betalen met CreditCard</button>
+        <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("EmailReservation", "Reservation", new { reservationID = Model.FirstOrDefault().ReservationID , Paid = false})'">Alleen reserveren</button>
+        <br /><br /><br /><br />
+    </div>
+</body>
+

@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Specials";
+}
+
+<body>
+    <br />
+    <table style="border: 1px solid black">
+        <tr>
+            <td style="padding:10px">
+                <b>Ladies night!</b>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:10px">
+                <p>
+                    Zin in een avondje uit met vriendinnen? Kom dan naar Ladies at the Movies! <br />
+                    Een avond zonder mannen maar mét een top-film, drankje, hapje en een exclusieve goodiebag.<br /><br />
+
+                    Alle vrouwelijke filmliefhebbers ontvangen tijdens de Pathé Ladies Night:<br />
+                    <ul style="padding-left:15px">
+                        <li>Glaasje bubbels / bruisend drankje en een hapje</li>
+                        <li>Een mooie goodiebag met leuke en lekkere goodies</li>
+                        <li>Popcorn en een drankje voor tijdens de film</li>
+                        <li>Kans op spectaculaire prijzen</li>
+                    </ul>
+
+                    <b>Let op:</b> De activiteiten rondom de Ladies Night starten een uur vóór aanvang van de film. Het zaalprogramma start op het tijdstip dat op je ticket staat vermeld.<br />
+
+
+                    Ticketprijs: € 15,45<br />
+                    Plaatsen zijn beperkt.<br />
+                    <b>Opgelet: Ladies only</b><br /><br />
+                    <button class="btn btn-outline-danger" type="button" onclick="location.href = '@Url.Action("Ladies", "Specials")'">Bestel nu tickets!</button>
+                </p>
+            </td>
+            <td>
+                <img src="~/Content/special_ladies.png" />
+            </td>
+        </tr>
+    </table>
+    <br />
+    <table style="border: 1px solid black">
+        <tr>
+            <td style="padding:10px">
+                <b>Kindefeestje!</b>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:10px">
+                <p>
+                    Voor je verjaardag naar de film? <br />
+                    Boek dan nu ons speciale kinderfeestje arrangement!<br /><br />
+
+                    Inclusief:<br />
+                    <ul style="padding-left:15px">
+                        <li>Gratis popcorn en een drankje tijdens de film</li>
+                        <li>Een presentje voor de jarige</li>
+                        <li>Een kroket of bitterballen na afloop van de film</li>
+                        <li>Leukje feesthoedjes voor iedereen</li>
+                    </ul>
+
+                    <b>Let op:</b> Zorg dat je een half uur voor de aanvang van de film aanwezig bent. Het zaalprogramma start op het tijdstip dat op je ticket staat vermeld.<br />
+
+
+                    Ticketprijs: € 14,45<br />
+                    <b>Opgelet: Kinderfeestjes zijn voor kinderen tot maximaal 13 jaar!</b><br /><br />
+                    <button class="btn btn-outline-danger" type="button" onclick="location.href = '@Url.Action("KidsOverview", "Specials")'">Bestel nu tickets!</button>
+                </p>
+            </td>
+            <td>
+                <img src="~/Content/special_balloon.png" />
+            </td>
+        </tr>
+    </table>
+    <br /><br />
+</body>
+

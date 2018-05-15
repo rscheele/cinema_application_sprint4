@@ -1,0 +1,118 @@
+﻿@model Domain.Entities.Show
+
+@{
+    ViewBag.Title = "Ladies Night: " + Model.Movie.Name;
+}
+
+<body>
+    <div>
+        <br />
+        <h4><b>@Html.DisplayFor(model => model.Movie.Name)</b></h4>
+        <!-- IMDB plugin BEGIN-->
+        <span class="imdbRatingPlugin" data-user="ur86663828" data-title="@Model.Movie.IMDB" data-style="p4">
+            <a href="@Model.Movie.Website">
+                <img src="~/Content/imdb_logo.png" alt="@Html.DisplayFor(model => model.Movie.Name)" />
+            </a>
+        </span>
+        <script>(function (d, s, id) { var js, stags = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) { return; } js = d.createElement(s); js.id = id; js.src = "https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/js/rating.js"; stags.parentNode.insertBefore(js, stags); })(document, 'script', 'imdb-rating-api');</script>
+        <!-- IMDB plugin END-->
+        <hr />
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <img src="data:image;base64,@System.Convert.ToBase64String(Model.Movie.Image)" width="350" height="550" />
+                </div>
+                <div class="col-sm">
+                    <dl class="dl-vertical">
+                        <dt>
+                            Info
+                        </dt>
+                        <dd>
+                            Deze week in Ladies Night, de film @Html.DisplayFor(model => model.Movie.Name)! Bestel nu tickets want op = op!
+                        </dd>
+                        <dt>
+                            Leeftijd
+                        </dt>
+                        <dd>
+                            @if (Model.Movie.Age >= 16)
+                            {
+                                <img src="~/Content/kijkwijzer-16.png" alt="16" height="25" width="25" />
+                            }
+                            else if (Model.Movie.Age == 12)
+                            {
+                                <img src="~/Content/kijkwijzer-12.png" alt="12" height="25" width="25" />
+                            }
+                            else if (Model.Movie.Age == 6)
+                            {
+                                <img src="~/Content/kijkwijzer-6.png" alt="6" height="25" width="25" />
+                            }
+                            else if (Model.Movie.Age < 6)
+                            {
+                                <img src="~/Content/kijkwijzer-AL.png" alt="AL" height="25" width="25" />
+                            }
+                        </dd>
+                        <dt>
+                            Type film(3D of normaal)
+                        </dt>
+                        <dd>
+                            @if (Model.Movie.Is3D == true)
+                            {
+                                <p>3D</p>
+                            }
+                            else
+                            {
+                                <p>Normaal</p>
+                            }
+                        </dd>
+                        <dt>
+                            Taal
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Movie.Language)
+                        </dd>
+                        <dt>
+                            Hoofdacteurs
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Movie.MainActors)
+                        </dd>
+                        <dt>
+                            Bijrollen
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Movie.SubActors)
+                        </dd>
+                        <dt>
+                            Regisseur
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Movie.Director)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Movie.Genre)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Movie.Genre)
+                        </dd>
+                    </dl>
+                    <p>
+                        <button class="btn btn-danger" type="button" onclick="location.href = '@Url.Action("LadiesOrder", "Specials", new { id = Model.ShowID}, null)'">Bestel kaartjes</button>
+                    </p>
+                </div>
+                <div class="col-sm">
+                    <iframe width="400" height="300" src="@Model.Movie.Trailer"></iframe>
+                    <dl>
+                        <dt>
+                            Beschrijving
+                        </dt>
+                        <dd>
+                            @Html.Raw(Model.Movie.Description)
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
