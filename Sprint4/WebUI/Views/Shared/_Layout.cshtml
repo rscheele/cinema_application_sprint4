@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -61,37 +62,58 @@
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0p-i9A2ib2aqNKex48WhUJmIqqaHlNms&callback=initMap">
     </script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     @*<div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Avans Cinema", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Avans Cinema", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav"></ul>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav"></ul>
-            </div>
-        </div>
-    </div>*@
+        </div>*@
     <!--Begin Avans nav bar-->
-    <nav class="nav-avans", style="height: 60px;">
-        <div class="container"}>
+    <nav class="nav-avans" , style="height: 60px;">
+        <div class="container" }>
+            @if (Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                @Html.AntiForgeryToken()
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("Index", "Manage", new { title = "Manage" })'">Hallo @User.Identity.GetUserName()!</button>
+                    </li>
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                </ul>
+                }
+            }
+            else
+            {
+                <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("Register", "Account", new { id = "registerLink" })'">Registreren</button>
+                <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("Login", "Account", new { id = "loginLink" })'">Inloggen</button>
+            }
             @Html.ActionLink("Avans Cinema", "Overview", "UpcomingShow", new { locationid = 1 }, new { @style = "color:black; padding: 10px; font-weight: bold;", @class = "navbar-brand" })
             @if (ViewContext.HttpContext.Request.AppRelativeCurrentExecutionFilePath != "~/UpcomingShow/Overview" & ViewContext.HttpContext.Request.AppRelativeCurrentExecutionFilePath != "~/Home/Index")
             {
-                 <input action="action" class="btn btn-outline-light" style="float: right; padding:8px; margin-top:8px" type="button" value="Terug naar vorige scherm" onclick="window.history.go(-1); return false;" />
+                <input action="action" class="btn btn-outline-light" style="float: right; padding:8px; margin-top:8px; margin-right:16px" type="button" value="Terug naar vorige scherm" onclick="window.history.go(-1); return false;" />
             }
-            <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("Reservation", "Reservation")'">Reserving ophalen</button>            
+            <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("Reservation", "Reservation")'">Reserving ophalen</button>
             <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("Contact", "Contact")'">Contact</button>
             <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("Specials", "Specials")'">Arrangementen en Specials</button>
             <ul class="global-links">
                 <li>
-                    
+
                 </li>
             </ul>
         </div>
@@ -101,13 +123,13 @@
         @RenderBody()
         <hr />
         @*<footer>
-            <p>&copy; @DateTime.Now.Year - IVH15</p>
-        </footer>*@
+                <p>&copy; @DateTime.Now.Year - IVH15</p>
+            </footer>*@
     </div>
     <!-- Begin Footer Avans -->
     <footer class="card-footer" style="padding-left:160px; padding-right:210px">
         <div class="col"></div>
-        <button class="btn btn-outline-danger" type="button" style="margin-left:50px" onclick="location.href = '@Url.Action("Unsubscribe", "Email")'">Afmelden nieuwsbrief</button> 
+        <button class="btn btn-outline-danger" type="button" style="margin-left:50px" onclick="location.href = '@Url.Action("Unsubscribe", "Email")'">Afmelden nieuwsbrief</button>
         <a target="_blank" href="https://www.facebook.com/Avansinformatica/" style="float: right; padding-left:8px;"><img src="~/Content/socialmedia_facebook.png" /></a>
         <a target="_blank" href="https://twitter.com/avanshogeschool" style="float: right; padding-left:8px;"><img src="~/Content/socialmedia_twitter.png" /></a>
         <a target="_blank" href="https://www.instagram.com/avanshogeschool/" style="float: right; padding-left:8px;"><img src="~/Content/socialmedia_insta.png" /></a>
@@ -116,5 +138,8 @@
     <!-- End Footer Avans-->
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -187,3 +187,9 @@ F:\Sprint4\Sprint4\WebUI\obj\Debug\WebUI.csprojResolveAssemblyReference.cache
 F:\Sprint4\Sprint4\WebUI\obj\Debug\WebUI.csproj.CoreCompileInputs.cache
 F:\Sprint4\Sprint4\WebUI\obj\Debug\WebUI.dll
 F:\Sprint4\Sprint4\WebUI\obj\Debug\WebUI.pdb
+F:\Sprint4\Sprint4\WebUI\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\Sprint4\Sprint4\WebUI\bin\Microsoft.Owin.Security.Google.dll
+F:\Sprint4\Sprint4\WebUI\bin\System.Web.Optimization.dll
+F:\Sprint4\Sprint4\WebUI\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\Sprint4\Sprint4\WebUI\bin\Microsoft.Owin.Security.Google.xml
+F:\Sprint4\Sprint4\WebUI\bin\System.Web.Optimization.xml
