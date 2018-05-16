@@ -141,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IEmailRepository.cs" />
+    <Compile Include="Abstract\IEnqueteResponseRepository.cs" />
     <Compile Include="Abstract\IMovieOverviewRepository.cs" />
     <Compile Include="Abstract\IRoomRepository.cs" />
     <Compile Include="Abstract\IShowRepository.cs" />
@@ -150,6 +151,7 @@
     <Compile Include="Concrete\CinemaInitializer.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EmailRepository.cs" />
+    <Compile Include="Concrete\EnqueteResponseRepository.cs" />
     <Compile Include="Concrete\MovieOverviewRepository.cs" />
     <Compile Include="Concrete\RoomRepository.cs" />
     <Compile Include="Concrete\ShowRepository.cs" />
@@ -157,6 +159,7 @@
     <Compile Include="Concrete\TempTicketRepository.cs" />
     <Compile Include="Concrete\TicketRepository.cs" />
     <Compile Include="Entities\EmailAdress.cs" />
+    <Compile Include="Entities\EnqueteResponse.cs" />
     <Compile Include="Entities\Movie.cs" />
     <Compile Include="Entities\Location.cs" />
     <Compile Include="Entities\Room.cs" />

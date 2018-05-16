@@ -16,6 +16,7 @@ namespace Domain.Entities
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int TicketID { get; set; }
+        public string TicketCode { get; set; }
         public long ReservationID { get; set; }
         public decimal Price { get; set; }
         public string TicketType { get; set; }

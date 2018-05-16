@@ -21,6 +21,7 @@ namespace WebUI.Controllers
         private ITempTicketRepository tempTicketRepository;
         private IShowSeatRepository showSeatRepository;
         private IEmailRepository emailRepository;
+        private static Random random = new Random();
 
         public ReservationController(IMovieOverviewRepository movieRepository, IShowRepository showRepository, ITicketRepository ticketRepository, ITempTicketRepository tempTicketRepository, IShowSeatRepository showSeatRepository, IEmailRepository emailRepository)
         {
@@ -228,6 +229,7 @@ namespace WebUI.Controllers
                         }
                     }
                     Ticket ticket = new Ticket();
+                    ticket.TicketCode = RandomString(10);
                     ticket.IsPaid = item.IsPaid;
                     ticket.Popcorn = item.Popcorn;
                     ticket.Price = item.Price;
@@ -256,6 +258,14 @@ namespace WebUI.Controllers
             {
                 return View("EmailReservation", emailReservation);
             }
+        }
+
+        // FUNCTION TO GENERATE RANDOM STRING
+        public static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
         [HttpGet]

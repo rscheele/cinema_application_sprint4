@@ -53,7 +53,7 @@ namespace WebUI.Controllers
                 AddEmptyLine();
 
                 // ticket info
-                addText("TicketID: " + t.TicketID);
+                addText("Ticket Code: " + t.TicketCode);
                 addText("TicketType: " + t.TicketType);
                 addText("Reserveringsnummer: " + t.ReservationID);
 

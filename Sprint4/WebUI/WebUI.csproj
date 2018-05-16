@@ -318,6 +318,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
+    <Compile Include="Controllers\EnqueteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PinController.cs" />
@@ -429,6 +430,7 @@
     <Content Include="Views\SalesTicket\OrderTickets.cshtml" />
     <Content Include="Views\SalesTicket\AddPopcorn.cshtml" />
     <Content Include="Views\SalesTicket\DisplayTempReservation.cshtml" />
+    <Content Include="Views\Enquete\Enquete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

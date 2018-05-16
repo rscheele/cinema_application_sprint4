@@ -10,6 +10,7 @@ namespace Domain.Abstract
     public interface ITicketRepository
     {
         IEnumerable<Ticket> GetTickets(long ReservationID);
+        Ticket GetTicketByCode(string ticketCode);
         IEnumerable<Ticket> GetShowTickets(int ShowID);
         IEnumerable<Ticket> GetMovieSecretTickets();
         void UpdateTickets(List<Ticket> Tickets);

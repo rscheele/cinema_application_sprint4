@@ -65,6 +65,19 @@ namespace Domain.Concrete
             }
             context.SaveChanges();
         }
+
+        public Ticket GetTicketByCode(string ticketCode)
+        {
+            Ticket ticket = context.Tickets.Where(x => x.TicketCode == ticketCode).FirstOrDefault();
+            if (ticket != null)
+            {
+                return ticket;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
         
 }

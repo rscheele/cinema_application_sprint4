@@ -1,0 +1,59 @@
+﻿@model  Domain.Entities.EnqueteResponse
+@{
+    ViewBag.Title = "Enquete";
+}
+
+<body>
+    <br />
+    <h2>Geef feedback op je bioscoopbezoek!</h2>
+    <p>Gebruik je ticket code om onze enquete in te vullen.</p>
+    <p style="color:red;"><b>@ViewBag.WrongCode</b></p>
+    @using (Html.BeginForm("Enquete", "Enquete", FormMethod.Post))
+    {
+        <div class="form-group">
+            Ticketcode: <br />
+            @Html.TextBoxFor(x => Model.TicketCode, new { @class = "formcontrol" })
+        </div>
+        <div class="form-group">
+            Waardeer je bezoek met een score tussen 1 en 5:<br />
+            @{
+                List<SelectListItem> listItems = new List<SelectListItem>();
+                listItems.Add(new SelectListItem
+                {
+                    Text = "1",
+                    Value = "1"
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "2",
+                    Value = "2"
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "3",
+                    Value = "3",
+                    Selected = true
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "4",
+                    Value = "4"
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "5",
+                    Value = "5"
+                });
+            }
+
+            @Html.DropDownListFor(model => model.UserScore, listItems, new { @class = "formcontrol" })
+        </div>
+        <div class="form-group">
+            Opmerkingen: <br />
+            @Html.TextAreaFor(x => Model.Comment, new { @class = "formcontrol" })
+        </div>
+        <br />
+        <input class="btn btn-danger" type="submit" value="Versturen!" />
+    }
+</body>
+
