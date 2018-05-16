@@ -322,6 +322,8 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PinController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\SalesController.cs" />
+    <Compile Include="Controllers\SalesTicketController.cs" />
     <Compile Include="Migrations\201805151551489_role.cs" />
     <Compile Include="Migrations\201805151551489_role.Designer.cs">
       <DependentUpon>201805151551489_role.cs</DependentUpon>
@@ -422,6 +424,11 @@
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Role\Details.cshtml" />
     <Content Include="Views\Role\Delete.cshtml" />
+    <Content Include="Views\Sales\SalesIndex.cshtml" />
+    <Content Include="Views\SalesTicket\Overview.cshtml" />
+    <Content Include="Views\SalesTicket\OrderTickets.cshtml" />
+    <Content Include="Views\SalesTicket\AddPopcorn.cshtml" />
+    <Content Include="Views\SalesTicket\DisplayTempReservation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,59 @@
+﻿@model  List<WebUI.Models.TempTicketModel>
+
+@{
+    ViewBag.Title = "AddPopcorn";
+}
+
+<body>
+    <div class="text-center">
+        <p>
+            <h2>Voeg popcorn en 3D brillen toe</h2><br />
+        @if (Model.FirstOrDefault().Is3D == true)
+        {
+            <p style="color:red;"><b>Dit is een 3D film. Hiervoor is een 3D bril nodig.</b></p>
+        }
+        </p>
+        @using (Html.BeginForm("AddPopcorn", "SalesTicket", FormMethod.Post))
+        {
+            <table align="center">
+                <tr>
+                    <th scope="col">Ticket Nummer</th>
+                    <th scope="col">Prijs</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Met popcorn</th>
+                    @if (Model.FirstOrDefault().Is3D == true)
+                    {
+                        <th scope="col">Met 3D bril</th>
+                    }
+                </tr>
+                @{ int j = 0;}
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    j++;
+                    <tr>
+                        <td>
+                            @j <p style="display:none">@Html.TextBoxFor(x => Model[i].ReservationID)</p>
+                        </td>
+                        <td>
+                            €@Html.DisplayFor(x => Model[i].Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(x => Model[i].TicketType)
+                        </td>
+                        <td>
+                            @Html.CheckBoxFor(x => Model[i].Popcorn) + €5,-
+                        </td>
+                        @if (Model.FirstOrDefault().Is3D == true)
+                        {
+                            <td>
+                                @Html.CheckBoxFor(x => Model[i].Glasses) + €2,-
+                            </td>
+                        }
+                    </tr>
+                }
+
+            </table> <br />
+            <input class="btn btn-danger" type="submit" value="Voeg toe!" />
+        }
+    </div>
+</body>
