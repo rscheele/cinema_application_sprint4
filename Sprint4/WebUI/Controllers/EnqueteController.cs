@@ -53,5 +53,25 @@ namespace WebUI.Controllers
             }
             return View();
         }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public ActionResult ViewEnqueteResults()
+        {
+            List<EnqueteResponse> responses = enqueteResponseRepository.GetAllEnqueteResponses().Reverse().ToList();
+
+            // CALCULATE MEAN SCORE
+            int i = 0;
+            int totalScore = 0;
+            foreach (var item in responses)
+            {
+                i++;
+                totalScore = totalScore + item.UserScore;
+            }
+            double meanScore = (double)totalScore / (double)i;
+            ViewBag.MeanScore = meanScore;
+
+            return View(responses);
+        }
     }
 }

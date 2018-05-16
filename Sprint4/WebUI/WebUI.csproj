@@ -431,6 +431,7 @@
     <Content Include="Views\SalesTicket\AddPopcorn.cshtml" />
     <Content Include="Views\SalesTicket\DisplayTempReservation.cshtml" />
     <Content Include="Views\Enquete\Enquete.cshtml" />
+    <Content Include="Views\Enquete\ViewEnqueteResults.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

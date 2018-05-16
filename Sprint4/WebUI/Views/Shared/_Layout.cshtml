@@ -109,6 +109,8 @@
             @if (ViewContext.HttpContext.User.IsInRole("Admin"))
             {
                 <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("Index", "Role")'">Roles</button>
+                <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("ViewEnqueteResults", "Enquete")'">Enquete</button>
+
             }
             @if (ViewContext.HttpContext.User.IsInRole("Kassa"))
             {

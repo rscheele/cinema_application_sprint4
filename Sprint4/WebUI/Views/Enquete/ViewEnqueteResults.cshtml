@@ -1,0 +1,38 @@
+﻿@model List<Domain.Entities.EnqueteResponse>
+
+@{
+    ViewBag.Title = "ViewEnqueteResults";
+}
+
+<body>
+    <br />
+    <h1>Enquete resultaten</h1>
+    <p>Hier volgen de antwoorden van de enquete, de scores zijn op een schaal van 1 tot 5.</p>
+    <p>De gemiddelde score is <b>@ViewBag.MeanScore</b></p>
+    <table class="table">
+        <tr>
+            <th>
+                <p>Ticketcode</p>
+            </th>
+            <th>
+                <p>Cijfer</p>
+            </th>
+            <th>
+                <p>Opmerkingen</p>
+            </th>
+      @foreach (var item in Model)
+      {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserScore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+        </tr>
+      }
+    </table>
+</body>
