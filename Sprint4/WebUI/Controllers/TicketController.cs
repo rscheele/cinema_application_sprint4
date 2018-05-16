@@ -241,6 +241,15 @@ namespace WebUI.Controllers
                 {
                     ticketList[i].Glasses = false;
                 }
+                if (tickets[i].Vip == true)
+                {
+                    ticketList[i].Price = ticketList[i].Price + 5.00M;
+                    ticketList[i].Vip = true;
+                }
+                else
+                {
+                    ticketList[i].Vip = false;
+                }
             }
             tempTicketRepository.UpdateTempTickets(ticketList);
             return RedirectToAction("SelectSeats", "SeatSelection", new { reservationID = tickets.FirstOrDefault().ReservationID });

@@ -46,9 +46,12 @@
                         @if (Model.FirstOrDefault().Is3D == true)
                         {
                             <td>
-                                @Html.CheckBoxFor(x => Model[i].Glasses) + €2,-
+                                @Html.CheckBoxFor(x => Model[i].Glasses, htmlAttributes: new { @checked = true } ) + €2,-
                             </td>
                         }
+                        <td>
+                            @Html.CheckBoxFor(x => Model[i].Vip) + €5,-
+                        </td>
                     </tr>
                 }
 

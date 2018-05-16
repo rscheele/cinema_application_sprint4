@@ -26,6 +26,7 @@
                 <th scope="col">Type</th>
                 <th scope="col">Popcorn inbegrepen?</th>
                 <th scope="col">3D bril inbegrepen?</th>
+                <th scope="col">VIP?</th>
                 <th scope="col">Rijnummer</th>
                 <th scope="col">Stoelnummer</th>
             </tr>
@@ -53,6 +54,16 @@
                 </td>
                 <td>
                     @if (item.Glasses == true)
+                {
+                    <p>Ja</p>
+            }
+            else
+            {
+                <p>Nee</p>
+        }
+                </td>
+                <td>
+                    @if (item.Vip == true)
                 {
                     <p>Ja</p>
             }

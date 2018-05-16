@@ -32,6 +32,7 @@ namespace Domain.Entities
         public virtual Show Show { get; set; }
         public bool Popcorn { get; set; }
         public bool Glasses { get; set; }
+        public bool Vip { get; set; }
 
 
     }

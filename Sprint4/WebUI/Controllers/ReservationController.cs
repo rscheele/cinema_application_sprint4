@@ -127,6 +127,7 @@ namespace WebUI.Controllers
                         ticket.ShowID = item.ShowID;
                         ticket.TicketType = item.TicketType;
                         ticket.Glasses = item.Glasses;
+                        ticket.Vip = item.Vip;
                         tickets.Add(ticket);
                     }
                     showSeatRepository.UpdateShowSeats(showSeats.ToList());
@@ -239,6 +240,7 @@ namespace WebUI.Controllers
                     ticket.ShowID = item.ShowID;
                     ticket.TicketType = item.TicketType;
                     ticket.Glasses = item.Glasses;
+                    ticket.Vip = item.Vip;
                     tickets.Add(ticket);
                 }
                 showSeatRepository.UpdateShowSeats(showSeats.ToList());

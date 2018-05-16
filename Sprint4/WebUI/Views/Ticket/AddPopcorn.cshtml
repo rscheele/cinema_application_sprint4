@@ -18,6 +18,8 @@
         {
             <p>Kies bij welke tickets je popcorn wilt toevoegen.</p>
         }
+        <p>Daarnaast kan je je ticket naar VIP upgraden voor €5,-. Bij een VIP ticket krijg je eigen parkeerservice en een drankje dat al voor je klaarstaat in de pauze!</p>
+
         </p>
         @using (Html.BeginForm("AddPopcorn", "Ticket", FormMethod.Post))
         {
@@ -26,11 +28,12 @@
                 <th scope="col">Ticket Nummer</th>
                 <th scope="col">Prijs</th>
                 <th scope="col">Type</th>
-                <th scope="col">Met popcorn</th>
+                <th scope="col">Popcorn</th>
                 @if (Model.FirstOrDefault().Is3D == true)
                 {
-                <th scope="col">Met 3D bril</th>
+                <th scope="col">3D bril</th>
                 }
+                <th scope="col">VIP</th>
             </tr>
             @{ int j = 0;}
             @for (int i = 0; i < Model.Count; i++)
@@ -52,9 +55,12 @@
                 @if (Model.FirstOrDefault().Is3D == true)
                 {
                 <td>
-                    @Html.CheckBoxFor(x => Model[i].Glasses) + €2,-
+                    @Html.CheckBoxFor(x => Model[i].Glasses, htmlAttributes: new { @checked = true }) + €2,-
                 </td>
                 }
+                <td>
+                    @Html.CheckBoxFor(x => Model[i].Vip) + €5,-
+                </td>
             </tr>
             }
 

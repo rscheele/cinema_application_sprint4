@@ -73,6 +73,7 @@ namespace WebUI.Controllers
                 addText("Leeftijd: " + show.Movie.Age);
                 addText("Duur: " + show.Movie.Length + " minuten");
                 addText("3D: " + (show.Movie.Is3D ? "Ja" : "Nee"));
+                addText("VIP: " + (t.Vip ? "Ja" : "Nee"));
                 addText("Prijs: €" + t.Price.ToString());
 
 
