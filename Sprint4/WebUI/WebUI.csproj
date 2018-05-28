@@ -433,6 +433,8 @@
     <Content Include="Views\SalesTicket\DisplayTempReservation.cshtml" />
     <Content Include="Views\Enquete\Enquete.cshtml" />
     <Content Include="Views\Enquete\ViewEnqueteResults.cshtml" />
+    <Content Include="Views\Subscription\AddSubscription.cshtml" />
+    <Content Include="Views\Subscription\PaymentOptions.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -442,7 +444,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Subscription\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">
