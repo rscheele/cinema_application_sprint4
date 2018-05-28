@@ -4,94 +4,106 @@
     ViewBag.Title = "PaymentOptions";
 }
 
-<h2>PaymentOptions</h2>
 
 <div>
-    <h4>Subscription</h4>
+    <br />
+    <h4>Overzicht</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <div class="col-md-8">
+        <dl class="dl-horizontal">
+            <dt>
+                Barcode
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SubscriptionId)
+            </dd>
+
+            <dt>
+                Voornaam
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                Straatnaam
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Street)
+            </dd>
+
+            <dt>
+                Huisnummer
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.HouseNumber)
+            </dd>
+            @if (Model.HouseNumberExtras != null)
+    {
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Street)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Street)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HouseNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HouseNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HouseNumberExtras)
+            Huisnummer toevoegingen
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.HouseNumberExtras)
         </dd>
+}
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HomeTown)
-        </dt>
+            <dt>
+                Woonplaats
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.HomeTown)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.HomeTown)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ImagePath)
-        </dt>
+            <dt>
+                Foto
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ImagePath)
-        </dd>
+            <dd>
+                <img src="@Url.Content(Model.ImagePath)" alt="Image" height="128" width="128" />
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BirthDate)
-        </dt>
+            <dt>
+                Geboortedatum
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BirthDate)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.BirthDate)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ExpireDate)
-        </dt>
+            <dt>
+                Abonnement verloopdatum
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ExpireDate)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ExpireDate)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+            <dt>
+                Email
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
+            <dt>
+                Telefoon
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
+        </dl>
+    </div>
+    <div class="col-md-4">
+        <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("PayCash", "Subscription", Model)'">Contant betalen</button>
+        <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("PayPIN", "Subscription", Model)'">Betalen met PIN</button>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>

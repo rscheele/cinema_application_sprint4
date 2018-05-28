@@ -3,10 +3,12 @@
     ViewBag.Title = "Index";
 }
 
-<div class="col-md-12">
-    <h2>Kassa index</h2>
+<div class="col-md-6">
+    <h2>Verkoop index</h2>
+    <p>Maak een keuze voor verkoop</p>
     <hr />
-    <button class="btn btn-danger" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("Overview", "SalesTicket")'">Kaartjes verkopen</button>
-    <button class="btn btn-danger" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("SalesIndex", "Sales")'">MaDiWoDo bon verkopen NYI</button>
-    <button class="btn btn-danger" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("AddSubscription", "Subscription")'">Abonnement verkopen NYI</button>
+    <button class="btn btn-danger" type="button" padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("Overview", "SalesTicket")'">Kaartjes verkopen</button>
+    <button class="btn btn-danger" type="button" padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("SalesIndex", "Sales")'">MaDiWoDo bon verkopen NYI</button>
+    <button class="btn btn-danger" type="button" padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("AddSubscription", "Subscription")'">Abonnement verkopen</button>
+    <hr />
 </div>

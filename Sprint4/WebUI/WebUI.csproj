@@ -340,6 +340,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PinViewModel.cs" />
+    <Compile Include="Models\PrintCard.cs" />
     <Compile Include="Models\PrintTickets.cs" />
     <Compile Include="Controllers\ReservationController.cs" />
     <Compile Include="Controllers\SeatSelectionController.cs" />
@@ -435,6 +436,7 @@
     <Content Include="Views\Enquete\ViewEnqueteResults.cshtml" />
     <Content Include="Views\Subscription\AddSubscription.cshtml" />
     <Content Include="Views\Subscription\PaymentOptions.cshtml" />
+    <Content Include="Views\Subscription\SuccesfulPayment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -17,7 +17,6 @@ namespace Domain.Entities
 
         }
         [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int SubscriptionId { get; set; }
         [Required]
         [DisplayName("Voornaam*")]

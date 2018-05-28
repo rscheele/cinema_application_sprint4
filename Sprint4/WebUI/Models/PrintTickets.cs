@@ -125,7 +125,7 @@ namespace WebUI.Controllers
         {
             MemoryStream stream = getMemoryStream();
             FileStreamResult result = new FileStreamResult(new MemoryStream(stream.GetBuffer()), "pdf/application");
-            result.FileDownloadName = "image.pdf";
+            result.FileDownloadName = "tickets.pdf";
             return result;
         }
     }
