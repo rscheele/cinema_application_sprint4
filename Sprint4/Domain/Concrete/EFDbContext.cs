@@ -19,7 +19,7 @@ namespace Domain.Concrete
         public DbSet<ShowSeat> ShowSeats { get; set; }
         public DbSet<EmailAdress> EmailAdresses { get; set; }
         public DbSet<EnqueteResponse> EnqueteResponse { get; set; }
-
+        public DbSet<Subscription> Subscriptions { get; set; }
         public EFDbContext() : base("EFDbContext"){
         
         }

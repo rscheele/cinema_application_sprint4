@@ -325,6 +325,7 @@
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\SalesTicketController.cs" />
+    <Compile Include="Controllers\SubscriptionController.cs" />
     <Compile Include="Migrations\201805151551489_role.cs" />
     <Compile Include="Migrations\201805151551489_role.Designer.cs">
       <DependentUpon>201805151551489_role.cs</DependentUpon>
@@ -441,6 +442,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Subscription\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">

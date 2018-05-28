@@ -160,6 +160,7 @@ namespace WebUI.Controllers
                 list.Add(new SelectListItem() { Value = role.Name, Text = role.Name });
             }
             ViewBag.Roles = list;
+            TempData["Roles"] = list;
             return View();
         }
 
@@ -170,6 +171,8 @@ namespace WebUI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            List<SelectListItem> list = (List<SelectListItem>)TempData["Roles"];
+            ViewBag.Roles = list;
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
@@ -189,7 +192,7 @@ namespace WebUI.Controllers
                 }
                 AddErrors(result);
             }
-
+            TempData["Roles"] = list;
             // If we got this far, something failed, redisplay form
             return View(model);
         }
