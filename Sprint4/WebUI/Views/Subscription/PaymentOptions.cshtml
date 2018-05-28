@@ -43,15 +43,15 @@
                 @Html.DisplayFor(model => model.HouseNumber)
             </dd>
             @if (Model.HouseNumberExtras != null)
-    {
-        <dt>
-            Huisnummer toevoegingen
-        </dt>
+            {
+                <dt>
+                    Huisnummer toevoegingen
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.HouseNumberExtras)
-        </dd>
-}
+                <dd>
+                    @Html.DisplayFor(model => model.HouseNumberExtras)
+                </dd>
+            }
 
             <dt>
                 Woonplaats
@@ -101,6 +101,11 @@
                 @Html.DisplayFor(model => model.PhoneNumber)
             </dd>
         </dl>
+    </div>
+    <div class="col-md-4">
+        <hr />
+        <h4>Totaalprijs: <b>€ 65,00</b></h4>
+        <hr />
     </div>
     <div class="col-md-4">
         <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("PayCash", "Subscription", Model)'">Contant betalen</button>

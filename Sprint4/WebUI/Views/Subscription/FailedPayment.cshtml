@@ -1,0 +1,14 @@
+﻿@model Domain.Entities.Subscription
+
+@{
+    ViewBag.Title = "FailedPayment";
+}
+
+<body>
+    <br />
+    <h2>De betaling is mislukt!</h2>
+    <hr />
+    <input action="action" class="btn btn-danger" style="padding:8px; margin-top:8px; margin-right:16px" type="button" value="Opnieuw proberen" onclick="window.history.go(-1); return false;" />
+    <button type="button" id="oneclick" class="btn btn-danger" onclick="location.href='@Url.Action("SalesIndex", "Sales")';">Annuleren</button>
+</body>
+

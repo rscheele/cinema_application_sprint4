@@ -63,7 +63,13 @@ namespace WebUI.Controllers
         [HttpGet]
         public ActionResult PayPIN(Subscription subscription)
         {
-            return RedirectToAction("SuccesfulPayment", subscription);
+            return RedirectToAction("PinPayment", subscription);
+        }
+
+        [HttpGet]
+        public ViewResult PinPayment(Subscription subscription)
+        {
+            return View("PinPayment", subscription);
         }
 
         [HttpGet]
@@ -74,6 +80,12 @@ namespace WebUI.Controllers
 
         [HttpGet]
         public ViewResult SuccesfulPayment(Subscription subscription)
+        {
+            return View(subscription);
+        }
+
+        [HttpGet]
+        public ViewResult FailedPayment(Subscription subscription)
         {
             return View(subscription);
         }

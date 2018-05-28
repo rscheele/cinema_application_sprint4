@@ -437,6 +437,8 @@
     <Content Include="Views\Subscription\AddSubscription.cshtml" />
     <Content Include="Views\Subscription\PaymentOptions.cshtml" />
     <Content Include="Views\Subscription\SuccesfulPayment.cshtml" />
+    <Content Include="Views\Subscription\PinPayment.cshtml" />
+    <Content Include="Views\Subscription\FailedPayment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -85,37 +85,37 @@
     <nav class="nav-avans" , style="height: 60px;">
         <div class="container" }>
             @if (Request.IsAuthenticated)
-            {
-                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-                {
-                @Html.AntiForgeryToken()
+    {
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
 
-                    <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("Index", "Manage", new { title = "Manage" })'">Hallo @User.Identity.GetUserName()!</button>
-                    <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="javascript:document.getElementById('logoutForm').submit()">Uitloggen</button>
-                }
-            }
-            else
-            {
-                <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("Register", "Account", new { id = "registerLink" })'">Registreren</button>
-                <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("Login", "Account", new { id = "loginLink" })'">Inloggen</button>
-            }
+            <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("Index", "Manage", new { title = "Manage" })'">Hallo @User.Identity.GetUserName()!</button>
+            <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="javascript:document.getElementById('logoutForm').submit()">Uitloggen</button>
+}
+}
+else
+{
+        <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("Register", "Account", new { id = "registerLink" })'">Registreren</button>
+        <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("Login", "Account", new { id = "loginLink" })'">Inloggen</button>
+}
             @Html.ActionLink("Avans Cinema", "Overview", "UpcomingShow", new { locationid = 1 }, new { @style = "color:black; padding: 10px; font-weight: bold;", @class = "navbar-brand" })
-            
+
             @if (ViewContext.HttpContext.Request.AppRelativeCurrentExecutionFilePath != "~/UpcomingShow/Overview" & ViewContext.HttpContext.Request.AppRelativeCurrentExecutionFilePath != "~/Home/Index")
-            {
-                <!--<input action="action" class="btn btn-outline-light" style="float: right; padding:8px; margin-top:8px; margin-right:16px" type="button" value="Terug naar vorige scherm" onclick="window.history.go(-1); return false;" />-->
-            }
+    {
+    }                <!--<input action="action" class="btn btn-outline-light" style="float: right; padding:8px; margin-top:8px; margin-right:16px" type="button" value="Terug naar vorige scherm" onclick="window.history.go(-1); return false;" />-->
+
             <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("Specials", "Specials")'">Arrangementen</button>
             @if (ViewContext.HttpContext.User.IsInRole("Admin"))
-            {
-                <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("Index", "Role")'">Roles</button>
-                <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("ViewEnqueteResults", "Enquete")'">Enquete</button>
+    {
+        <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("Index", "Role")'">Roles</button>
+        <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("ViewEnqueteResults", "Enquete")'">Enquete</button>
 
-            }
+}
             @if (ViewContext.HttpContext.User.IsInRole("Kassa"))
-            {
-                <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("SalesIndex", "Sales")'">Kassa</button>
-            }
+    {
+        <button class="btn btn-outline-light" type="button" style="float: right; padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("SalesIndex", "Sales")'">Kassa</button>
+}
             <ul class="global-links">
                 <li>
 

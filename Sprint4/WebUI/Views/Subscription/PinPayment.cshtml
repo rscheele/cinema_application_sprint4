@@ -1,0 +1,16 @@
+﻿@model Domain.Entities.Subscription
+
+@{
+    ViewBag.Title = "PinPayment";
+}
+
+<body>
+    <br />
+    <h2>Wachten op PIN terminal...</h2>
+    <p>Deze pagina springt automatisch verder als de PIN terminal aan de applicatie gekoppeld is</p>
+    <hr />
+    <p>Placeholder knoppen</p>
+    <button type="button" id="oneclick" class="btn btn-danger" onclick="location.href='@Url.Action("SuccesfulPayment", "Subscription", Model)';">Betaling geslaagd!</button>
+    <button type="button" id="oneclick" class="btn btn-danger" onclick="location.href='@Url.Action("FailedPayment", "Subscription", Model)';">Betaling mislukt!</button>
+</body>
+
