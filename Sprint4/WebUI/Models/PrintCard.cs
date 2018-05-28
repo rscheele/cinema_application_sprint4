@@ -23,7 +23,7 @@ namespace WebUI.Models
             smallFont = FontFactory.GetFont("Segoe UI", 6.0f, BaseColor.BLACK);
             largeFont = FontFactory.GetFont("Segoe UI", 10.0f, BaseColor.BLACK);
 
-            doc = new Document(PageSize.A7.Rotate());
+            doc = new Document(PageSize.A8);
             ms = new MemoryStream();
             writer = PdfWriter.GetInstance(doc, ms);
 
@@ -34,19 +34,20 @@ namespace WebUI.Models
         {
             writer.Open();
             doc.Open();
+
             addText("Avans Cinema", largeFont);
             addText("Naam: " + subscription.Name, smallFont);
-            addText("Adres: " + subscription.Street + " " + subscription.HouseNumber + " " + subscription.HomeTown, smallFont);
-            addText("Geboortedatum: " + subscription.BirthDate, smallFont);
+            addText("Adres: " + subscription.Street + " " + subscription.HouseNumber + subscription.HouseNumberExtras + " " + subscription.HomeTown, smallFont);
+            addText("Geboortedatum: " + subscription.BirthDate.ToShortDateString(), smallFont);
 
             AddEmptyLine();
 
-            addText("Barcode: " + subscription.SubscriptionId, smallFont);
+            addText("Barcode: " + subscription.Barcode, smallFont);
 
             AddEmptyLine();
 
             System.Drawing.Image image = System.Drawing.Image.FromFile(HttpContext.Current.Server.MapPath(subscription.ImagePath));
-            image = resizeImage(image, new System.Drawing.Size(64, 64));
+            image = resizeImage(image, new System.Drawing.Size(48, 48));
             BaseColor color = null;
             Image displayImage = Image.GetInstance(image, color);
             doc.Add(displayImage);

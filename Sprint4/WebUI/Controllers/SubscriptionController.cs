@@ -45,7 +45,7 @@ namespace WebUI.Controllers
                 subscription.ImageFile.SaveAs(fileName);
                 subscription.ExpireDate = DateTime.Now.AddYears(1);
                 Random random = new Random();
-                subscription.SubscriptionId = random.Next(100000000, 999999999);
+                subscription.Barcode = random.Next(100000000, 999999999);
                 subscriptionRepository.SaveSubscription(subscription);
                 ModelState.Clear();
                 return RedirectToAction("PaymentOptions", subscription);

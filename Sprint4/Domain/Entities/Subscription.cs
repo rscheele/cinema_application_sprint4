@@ -17,7 +17,9 @@ namespace Domain.Entities
 
         }
         [Key]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int SubscriptionId { get; set; }
+        public int Barcode { get; set; }
         [Required]
         [DisplayName("Voornaam*")]
         [RegularExpression(@"^[a-zA-Z]+[ a-zA-Z-_]*$", ErrorMessage = "Je kan alleen letters in je naam gebruiken.")]
