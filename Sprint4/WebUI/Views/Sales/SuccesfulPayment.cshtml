@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "SuccesfulPayment";
+}
+
+<body>
+    <div class="col-md-8">
+        <br />
+        <h4>De betaling is geslaagd!</h4>
+        <p>Klik op de onderstaande knop om de bioscoopbon te printen.</p>
+        <button type="button" id="oneclick" class="btn btn-danger" onclick="location.href='@Url.Action("PrintGiftCard", "Sales", new { value = ViewBag.Value })';disableButton(this)">Print bioscoopbon</button>
+    </div>
+</body>

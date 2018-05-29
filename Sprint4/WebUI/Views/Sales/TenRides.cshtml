@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "TenRides";
+}
+
+<body>
+    <div class="col-md-8">
+        <br />
+        <h2>Afrekenen</h2>
+        <hr />
+        <b>De tienrittenkaart kost € 49,95</b>
+        <hr />
+        <div class="col-md-8">
+            <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("SuccesFulRidesPayment", "Sales")'">Contant betalen</button>
+            <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("SuccesfulRidesPayment", "Sales")'">Betalen met PIN</button>
+        </div>
+    </div>
+</body>

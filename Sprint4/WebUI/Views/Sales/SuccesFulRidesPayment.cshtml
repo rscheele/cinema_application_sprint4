@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "SuccesFulRidesPayment";
+}
+
+<body>
+    <div class="col-md-8">
+        <br />
+        <h4>De betaling is geslaagd!</h4>
+        <p>Klik op de onderstaande knop om de 10-rittenkaart te printen.</p>
+        <button type="button" id="oneclick" class="btn btn-danger" onclick="location.href='@Url.Action("PrintRidesTicket", "Sales")';disableButton(this)">Print 10-rittenkaart</button>
+    </div>
+</body>

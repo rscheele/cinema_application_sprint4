@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "GiftCardSale";
+}
+
+<body>
+    <div class="col-md-8">
+        <br />
+        <h2>Afrekenen</h2>
+        <hr />
+        <b>Deze bioscoopbon kost € @ViewBag.Value,00</b>
+        <hr />
+        <div class="col-md-8">
+            <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("SuccesfulPayment", "Sales", new { value = ViewBag.Value })'">Contant betalen</button>
+            <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("SuccesfulPayment", "Sales", new { value = ViewBag.Value })'">Betalen met PIN</button>
+        </div>
+    </div>
+</body>

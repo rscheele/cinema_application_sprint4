@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "GiftCard";
+}
+
+<body>
+    <div class="col-md-8">
+        <br />
+        <h2>Bioscoopbonnen</h2>
+        <p>Kies een bedrag om een bon uit te printen.</p>
+        <button class="btn btn-info" type="button" padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("GiftCardSale", "Sales", new { value = 10 } )'">€ 10,00</button>
+        <button class="btn btn-info" type="button" padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("GiftCardSale", "Sales", new { value = 25 } )'">€ 25,00</button>
+        <button class="btn btn-info" type="button" padding:8px; margin-top:8px; margin-right:16px" onclick="location.href = '@Url.Action("GiftCardSale", "Sales", new { value = 50 } )'">€ 50,00</button>
+    </div>
+</body>
+
