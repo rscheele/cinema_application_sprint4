@@ -77,7 +77,6 @@ F:\Sprint4\Sprint4\Domain\bin\Debug\System.Web.Razor.xml
 F:\Sprint4\Sprint4\Domain\bin\Debug\System.Web.WebPages.xml
 F:\Sprint4\Sprint4\Domain\bin\Debug\System.Web.WebPages.Deployment.xml
 F:\Sprint4\Sprint4\Domain\bin\Debug\System.Web.WebPages.Razor.xml
-F:\Sprint4\Sprint4\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
 F:\Sprint4\Sprint4\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
 F:\Sprint4\Sprint4\Domain\obj\Debug\Domain.dll
 F:\Sprint4\Sprint4\Domain\obj\Debug\Domain.pdb
@@ -152,3 +151,5 @@ D:\Sprint4\Sprint4\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
 D:\Sprint4\Sprint4\Domain\obj\Debug\Domain.dll
 D:\Sprint4\Sprint4\Domain\obj\Debug\Domain.pdb
 D:\Sprint4\Sprint4\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+F:\Sprint4\Sprint4\Domain\obj\Debug\Domain.csprojAssemblyReference.cache
+F:\Sprint4\Sprint4\Domain\obj\Debug\Domain.csproj.CopyComplete

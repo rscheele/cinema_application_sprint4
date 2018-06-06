@@ -183,7 +183,6 @@ F:\Sprint4\Sprint4\WebUI\bin\System.Web.Razor.xml
 F:\Sprint4\Sprint4\WebUI\bin\System.Web.WebPages.xml
 F:\Sprint4\Sprint4\WebUI\bin\System.Web.WebPages.Deployment.xml
 F:\Sprint4\Sprint4\WebUI\bin\System.Web.WebPages.Razor.xml
-F:\Sprint4\Sprint4\WebUI\obj\Debug\WebUI.csprojResolveAssemblyReference.cache
 F:\Sprint4\Sprint4\WebUI\obj\Debug\WebUI.csproj.CoreCompileInputs.cache
 F:\Sprint4\Sprint4\WebUI\obj\Debug\WebUI.dll
 F:\Sprint4\Sprint4\WebUI\obj\Debug\WebUI.pdb
@@ -315,3 +314,5 @@ D:\Sprint4\Sprint4\WebUI\obj\Debug\WebUI.csproj.GenerateResource.Cache
 D:\Sprint4\Sprint4\WebUI\obj\Debug\WebUI.csproj.CoreCompileInputs.cache
 D:\Sprint4\Sprint4\WebUI\obj\Debug\WebUI.dll
 D:\Sprint4\Sprint4\WebUI\obj\Debug\WebUI.pdb
+F:\Sprint4\Sprint4\WebUI\obj\Debug\WebUI.csprojAssemblyReference.cache
+F:\Sprint4\Sprint4\WebUI\obj\Debug\WebUI.csproj.CopyComplete
