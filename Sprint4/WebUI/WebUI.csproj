@@ -355,6 +355,7 @@
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Reservation.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
+    <Compile Include="Models\SalesTempTicketModel.cs" />
     <Compile Include="Models\SeatLayout.cs" />
     <Compile Include="Models\TempTicketModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -446,6 +447,7 @@
     <Content Include="Views\Sales\SuccesfulPayment.cshtml" />
     <Content Include="Views\Sales\TenRides.cshtml" />
     <Content Include="Views\Sales\SuccesFulRidesPayment.cshtml" />
+    <Content Include="Views\SalesTicket\Deduction.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

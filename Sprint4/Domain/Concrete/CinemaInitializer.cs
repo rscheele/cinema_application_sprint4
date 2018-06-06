@@ -10,7 +10,7 @@ using System.Web.Hosting;
 namespace Domain.Concrete
 {
     // DropCreateDatabaseIfModelChanges VS DropCreateDatabaseAlways
-    public class CinemaInitializer : System.Data.Entity.DropCreateDatabaseAlways<EFDbContext>
+    public class CinemaInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<EFDbContext>
     {
         byte[] uprising = File.ReadAllBytes(HostingEnvironment.MapPath("~/Content/pacific-rim-uprising.jpg"));
         byte[] hour = File.ReadAllBytes(HostingEnvironment.MapPath("~/Content/darkest-hour.jpg"));

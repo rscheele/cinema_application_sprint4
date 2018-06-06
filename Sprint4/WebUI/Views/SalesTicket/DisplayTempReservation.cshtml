@@ -1,77 +1,114 @@
-﻿@model  IEnumerable<Domain.Entities.TempTicket>
+﻿@model  WebUI.Models.SalesTempTicketModel
 
 @{
     ViewBag.Title = "DisplayTicket";
 }
 
 <body>
-    <div class="text-center">
-        <br />
-        <h2>Verkoop overzicht</h2><br />
-        <p>
-            Er is gereserveerd voor <b>@Html.DisplayFor(x => Model.First().Show.Movie.Name)</b><br />
-            Op datum @Html.DisplayFor(x => Model.First().Show.BeginTime.DayOfWeek) @Html.DisplayFor(x => Model.First().Show.BeginTime.Day)-@Html.DisplayFor(x => Model.First().Show.BeginTime.Month)-@Html.DisplayFor(x => Model.First().Show.BeginTime.Year)<br />
-            Deze film begint om @Html.DisplayFor(x => Model.First().Show.BeginTime.TimeOfDay)<br />
-            En eindigt om @Html.DisplayFor(x => Model.First().Show.EndTime.TimeOfDay)<br />
-            De film draait in <b>zaal @Html.DisplayFor(x => Model.First().Show.Room.RoomNumber)</b><br />
-            <b>De totaalprijs is € @ViewBag.totalPrice</b>
-        </p>
-        <table class="col-md-8 table-hover table-bordered table-striped" align="center">
-            <tr>
-                <th scope="col">TicketID</th>
-                <th scope="col">Prijs</th>
-                <th scope="col">Type</th>
-                <th scope="col">Popcorn inbegrepen?</th>
-                <th scope="col">Met 3D Bril?</th>
-                <th scope="col">Rijnummer</th>
-                <th scope="col">Stoelnummer</th>
-            </tr>
-            @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(x => item.ID)
-                </td>
-                <td>
-                    €@Html.DisplayFor(x => item.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(x => item.TicketType)
-                </td>
-                <td>
-                    @if (item.Popcorn == true)
-                {
-                    <p>Ja</p>
-            }
-            else
-            {
-                <p>Nee</p>
-        }
-                </td>
-                <td>
-                    @if (item.Glasses == true)
-                {
-                    <p>Ja</p>
-            }
-            else
-            {
-                <p>Nee</p>
-        }
-                </td>
-                <td>
-                    @Html.DisplayFor(x => item.RowNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(x => item.SeatNumber)
-                </td>
-            </tr>
-    }
-        </table>
-        <br />
-        <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("Pay", "Pin", new { reservationID = Model.FirstOrDefault().ReservationID, paytype = ""})'">Naar betalen met Pin</button>
-        <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("Pay", "Pin", new { reservationID = Model.FirstOrDefault().ReservationID, paytype = "credit" })'">Naar betalen met CreditCard</button>
-        <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("Pay", "Pin", new { reservationID = Model.FirstOrDefault().ReservationID, paytype = "credit" })'">Naar betalen met CreditCard</button>
-        <br /><br /><br /><br />
+    <div class="col-md-12">
+        <div>
+            <div class="col-md-12">
+                <br />
+                <h3>Tickets</h3>
+                <p>
+                    @Html.DisplayFor(x => Model.TempTickets.First().Show.Movie.Name)<br />
+                    @Html.DisplayFor(x => Model.TempTickets.First().Show.BeginTime.DayOfWeek) @Html.DisplayFor(x => Model.TempTickets.First().Show.BeginTime.Day)-@Html.DisplayFor(x => Model.TempTickets.First().Show.BeginTime.Month)-@Html.DisplayFor(x => Model.TempTickets.First().Show.BeginTime.Year)<br />
+                    @Html.DisplayFor(x => Model.TempTickets.First().Show.BeginTime.TimeOfDay) - @Html.DisplayFor(x => Model.TempTickets.First().Show.EndTime.TimeOfDay)<br />
+                    Zaal @Html.DisplayFor(x => Model.TempTickets.First().Show.Room.RoomNumber)<br />
+                </p>
+                <table class="col-md-8 table-hover table-bordered table-striped" cellpadding="7">
+                    <tr>
+                        <th scope="col">TicketID</th>
+                        <th scope="col">Prijs</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Popcorn</th>
+                        <th scope="col">3D Bril</th>
+                        <th scope="col">Rijnummer</th>
+                        <th scope="col">Stoelnummer</th>
+                    </tr>
+                    @foreach (var item in Model.TempTickets)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(x => item.ID)
+                            </td>
+                            <td>
+                                €@Html.DisplayFor(x => item.Price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(x => item.TicketType)
+                            </td>
+                            <td>
+                                @if (item.Popcorn == true)
+                                {
+                                    <p>Ja</p>
+                                }
+                                else
+                                {
+                                    <p>Nee</p>
+                                }
+                            </td>
+                            <td>
+                                @if (item.Glasses == true)
+                                {
+                                    <p>Ja</p>
+                                }
+                                else
+                                {
+                                    <p>Nee</p>
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(x => item.RowNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(x => item.SeatNumber)
+                            </td>
+                        </tr>
+                    }
+                </table>
+                <hr />
+            </div>
+            <div class="col-md-12">
+                <h3>
+                    Kortingen
+                </h3>
+                <table class="col-md-8 table-hover table-bordered table-striped" cellpadding="7">
+                    <tr>
+                        <th>
+                            Korting type
+                        </th>
+                        <th>
+                            Bedrag
+                        </th>
+                        <th>
+                            TicketID
+                        </th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+                <br />
+                <b>Korting toevoegen</b><br />
+                <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("Deduction", "SalesTicket", new { salesTempTicketModel = Model })'">Bioscoopbon</button>
+                <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("Pay", "Pin", new { reservationID = Model.TempTickets.FirstOrDefault().ReservationID, paytype = ""})'">10-ritten-kaart</button>
+                <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("Pay", "Pin", new { reservationID = Model.TempTickets.FirstOrDefault().ReservationID, paytype = ""})'">MaDiWoDo</button>
+                <hr />
+            </div>
+            <div class="col-md-12">
+                <h3>Totaalprijs</h3>
+                <b>€  @Html.DisplayFor(x => Model.CurrentPrice)</b>
+                <hr />
+                <h3>Afrekenen</h3>
+                <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("Pay", "Pin", new { reservationID = Model.TempTickets.FirstOrDefault().ReservationID, paytype = ""})'">PIN</button>
+                <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("Pay", "Pin", new { reservationID = Model.TempTickets.FirstOrDefault().ReservationID, paytype = "credit" })'">Contant</button>
+                <hr />
+                <br /><br /><br /><br />
+            </div>
+        </div>
     </div>
 </body>
 
