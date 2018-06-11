@@ -48,6 +48,7 @@ namespace WebUI.Models
                 first = false;
                 // Location
                 addText("Locatie: " + location, largeFont);
+                addText("U bent geholpen door " + System.Web.HttpContext.Current.User.Identity.Name, normalFont);
 
                 AddEmptyLine();
                 AddEmptyLine();

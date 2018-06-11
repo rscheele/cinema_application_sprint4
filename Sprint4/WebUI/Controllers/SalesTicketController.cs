@@ -715,7 +715,7 @@ namespace WebUI.Controllers
         {
             List<Ticket> tickets = ticketRepository.GetTickets(reservationID).ToList();
             Show show = showRepository.FindShow(tickets[0].ShowID);
-            var pdf = new PrintTickets(tickets, show);
+            var pdf = new PrintSalesTickets(tickets, show);
             return pdf.SendPdf();
         }
 
