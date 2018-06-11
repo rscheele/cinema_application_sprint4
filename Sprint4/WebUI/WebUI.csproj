@@ -343,6 +343,7 @@
     <Compile Include="Models\PrintCard.cs" />
     <Compile Include="Models\PrintGiftCard.cs" />
     <Compile Include="Models\PrintRidesCard.cs" />
+    <Compile Include="Models\PrintSalesTickets.cs" />
     <Compile Include="Models\PrintTickets.cs" />
     <Compile Include="Controllers\ReservationController.cs" />
     <Compile Include="Controllers\SeatSelectionController.cs" />
@@ -448,6 +449,7 @@
     <Content Include="Views\Sales\TenRides.cshtml" />
     <Content Include="Views\Sales\SuccesFulRidesPayment.cshtml" />
     <Content Include="Views\SalesTicket\Deduction.cshtml" />
+    <Content Include="Views\SalesTicket\Success.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

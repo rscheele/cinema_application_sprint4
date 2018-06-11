@@ -116,6 +116,7 @@ namespace WebUI.Controllers
                             }
                         }
                         Ticket ticket = new Ticket();
+                        ticket.TicketCode = RandomString(10);
                         ticket.IsPaid = item.IsPaid;
                         ticket.Popcorn = item.Popcorn;
                         ticket.Price = item.Price;

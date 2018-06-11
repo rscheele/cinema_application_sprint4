@@ -18,6 +18,7 @@ namespace WebUI.Controllers
         private ITempTicketRepository tempTicketRepository;
         private ITicketRepository ticketRepository;
         private IRoomRepository roomRepository;
+        private static Random random = new Random();
 
         public SalesTicketController(IMovieOverviewRepository movieRepository, IShowRepository showRepository, IShowSeatRepository showSeatRepository, ITempTicketRepository tempTicketRepository, ITicketRepository ticketRepository, IRoomRepository roomRepository)
         {
@@ -637,6 +638,93 @@ namespace WebUI.Controllers
             return View("DisplayTempReservation", salesTempTicketModel);
         }
 
+        // PAY TICKETS AND SAVE THEM IN THE DATABASE
+        [HttpGet]
+        public ActionResult Pay(long reservationId)
+        {
+            List<TempTicket> tempTickets = tempTicketRepository.GetTempTicketsReservation(reservationId).ToList();
+            List<Ticket> tickets = new List<Ticket>();
+            if (tempTickets.Count != 0)
+            {
+                IEnumerable<ShowSeat> showSeats = showSeatRepository.GetShowSeatsReservation(tempTickets.FirstOrDefault().ReservationID);
+                foreach (var item in tempTickets)
+                {
+                    item.IsPaid = true;
+                    foreach (var seat in showSeats)
+                    {
+                        if (seat.SeatID == item.SeatID)
+                        {
+                            seat.IsReserved = false;
+                            seat.IsTaken = true;
+                        }
+                    }
+                    Ticket ticket = new Ticket();
+                    ticket.TicketCode = RandomString(10);
+                    ticket.IsPaid = item.IsPaid;
+                    ticket.Popcorn = item.Popcorn;
+                    ticket.Price = item.Price;
+                    ticket.ReservationID = item.ReservationID;
+                    ticket.RowNumber = item.RowNumber;
+                    ticket.Seat = item.Seat;
+                    ticket.SeatID = item.SeatID;
+                    ticket.SeatNumber = item.SeatNumber;
+                    ticket.Show = item.Show;
+                    ticket.ShowID = item.ShowID;
+                    ticket.TicketType = item.TicketType;
+                    ticket.Glasses = item.Glasses;
+                    ticket.Vip = item.Vip;
+                    tickets.Add(ticket);
+                }
+                showSeatRepository.UpdateShowSeats(showSeats.ToList());
+                ticketRepository.SaveTickets(tickets);
+                tempTicketRepository.DeleteTempTicket(tempTickets.FirstOrDefault().ReservationID);
+            }
+            else
+            {
+                tickets = ticketRepository.GetTickets(reservationId).ToList();
+                IEnumerable<ShowSeat> showSeats = showSeatRepository.GetShowSeatsReservation(tickets.FirstOrDefault().ReservationID);
+                foreach (var item in tickets)
+                {
+                    item.IsPaid = true;
+                    foreach (var seat in showSeats)
+                    {
+                        if (seat.SeatID == item.SeatID)
+                        {
+                            seat.IsReserved = false;
+                            seat.IsTaken = true;
+                        }
+                    }
+                }
+                ticketRepository.UpdateTickets(tickets);
+            }
 
+            Reservation reservation = new Reservation();
+            reservation.reservationID = reservationId;
+            return View("Success", reservation);
+        }
+
+        // SHOW SUCCESFUL PAYMENT VIEW
+        public ViewResult Success(Reservation reservation)
+        {
+            return View(reservation);
+        }
+
+        // PRINT THE TICKETS
+        [HttpGet]
+        public ActionResult PrintSessionTickets(long reservationID)
+        {
+            List<Ticket> tickets = ticketRepository.GetTickets(reservationID).ToList();
+            Show show = showRepository.FindShow(tickets[0].ShowID);
+            var pdf = new PrintTickets(tickets, show);
+            return pdf.SendPdf();
+        }
+
+        // FUNCTION TO GENERATE RANDOM STRING
+        public static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
     }
 }
