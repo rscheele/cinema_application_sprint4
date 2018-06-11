@@ -68,6 +68,9 @@ namespace WebUI.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+        [Required]
+        [Display(Name = "Gebruikersnaam")]
+        public string UserName { get; set; }
         [Display(Name = "Authorisatie rol")]
         public string RoleName { get; set; }
         [Required]
