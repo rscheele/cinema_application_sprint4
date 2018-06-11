@@ -70,32 +70,51 @@
                 <hr />
             </div>
             <div class="col-md-12">
-                <h3>
-                    Kortingen
-                </h3>
-                <table class="col-md-8 table-hover table-bordered table-striped" cellpadding="7">
-                    <tr>
-                        <th>
-                            Korting type
-                        </th>
-                        <th>
-                            Bedrag
-                        </th>
-                        <th>
-                            TicketID
-                        </th>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
+                @if (Model.Deductions != null)
+                {
+                    <h3>
+                        Kortingen
+                    </h3>
+                    <table class="col-md-8 table-hover table-bordered table-striped" cellpadding="7">
+                        <tr>
+                            <th>
+                                Korting type
+                            </th>
+                            <th>
+                                Bedrag
+                            </th>
+                            <th>
+                                Verwijderen
+                            </th>
+                        </tr>
+
+                        @foreach (var item in Model.Deductions)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(x => item.Name)
+                                </td>
+                                <td>
+                                    €@Html.DisplayFor(x => item.Amount)
+                                </td>
+                                <td>
+                                    <button class="btn btn-danger" type="button" onclick="location.href = '@Url.Action("RemoveDeduction", "SalesTicket", new { id = item.Id }, null)'">Verwijderen</button>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                }
                 <br />
                 <b>Korting toevoegen</b><br />
-                <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("Deduction", "SalesTicket", new { salesTempTicketModel = Model })'">Bioscoopbon</button>
-                <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("Pay", "Pin", new { reservationID = Model.TempTickets.FirstOrDefault().ReservationID, paytype = ""})'">10-ritten-kaart</button>
-                <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("Pay", "Pin", new { reservationID = Model.TempTickets.FirstOrDefault().ReservationID, paytype = ""})'">MaDiWoDo</button>
+                <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("Deduction", "SalesTicket", new { tarrifType = "Bioscoopbon 10", tarrifReduction = 10 })'">Bioscoopbon € 10,00</button>
+                <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("Deduction", "SalesTicket", new { tarrifType = "Bioscoopbon 25", tarrifReduction = 25 })'">Bioscoopbon € 25,00</button>
+                <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("Deduction", "SalesTicket", new { tarrifType = "Bioscoopbon 50", tarrifReduction = 50 })'">Bioscoopbon € 50,00</button>
+                @if ((int)System.DateTime.Now.DayOfWeek == 1 | (int)System.DateTime.Now.DayOfWeek == 2 | (int)System.DateTime.Now.DayOfWeek == 3 | (int)System.DateTime.Now.DayOfWeek == 4)
+                {
+                    <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("Deduction", "SalesTicket", new { tarrifType = "MaDiWoDo", tarrifReduction = 15 })'">MaDiWoDo bon</button>
+                }
+                <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("Deduction", "SalesTicket", new { tarrifType = "10-ritten kaart", tarrifReduction = 15 })'">10-ritten kaart</button>
                 <hr />
             </div>
             <div class="col-md-12">
@@ -103,8 +122,7 @@
                 <b>€  @Html.DisplayFor(x => Model.CurrentPrice)</b>
                 <hr />
                 <h3>Afrekenen</h3>
-                <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("Pay", "Pin", new { reservationID = Model.TempTickets.FirstOrDefault().ReservationID, paytype = ""})'">PIN</button>
-                <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("Pay", "Pin", new { reservationID = Model.TempTickets.FirstOrDefault().ReservationID, paytype = "credit" })'">Contant</button>
+                <button class="btn btn-danger" type="button" id="oneclick" onclick="location.href = '@Url.Action("Pay", "SalesTicket", new { reservationId = Model.TempTickets.FirstOrDefault().ReservationID })'">Betalen</button>
                 <hr />
                 <br /><br /><br /><br />
             </div>

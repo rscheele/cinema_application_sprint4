@@ -20,8 +20,9 @@ namespace WebUI.Models
 
     public class Deduction
     {
-        private long TicketId { get; set; }
-        private string Name { get; set; }
-        private decimal Amount { get; set; }
+        public int Id { get; set; }
+        public long TicketId { get; set; }
+        public string Name { get; set; }
+        public decimal Amount { get; set; }
     }
 }

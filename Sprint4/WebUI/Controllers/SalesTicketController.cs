@@ -579,20 +579,64 @@ namespace WebUI.Controllers
             salesTempTicketModel.TotalPrice = totalPrice;
             salesTempTicketModel.CurrentPrice = totalPrice;
 
+            TempData["salesTempTicketModel"] = salesTempTicketModel;
             return View("DisplayTempReservation", salesTempTicketModel);
         }
 
-        // DISPLAYS THE SALE AND ALLOWS FOR PAYMENT
+        // ADD DEDUCTION IN DEDUCTION OVERVIEW
         [HttpGet]
-        public ActionResult DisplayReservation(SalesTempTicketModel salesTempTicketModel)
+        public ViewResult Deduction(string tarrifType,  int tarrifReduction)
         {
+            SalesTempTicketModel salesTempTicketModel = (SalesTempTicketModel)TempData["salesTempTicketModel"];
+            List<Deduction> deductions = salesTempTicketModel.Deductions;
+            Deduction deduction = new Deduction { Name = tarrifType, Amount = tarrifReduction };
+            if (deductions == null)
+            {
+                List<Deduction> newDeductions = new List<Deduction>();
+                deduction.Id = 0;
+                newDeductions.Add(deduction);
+                salesTempTicketModel.Deductions = newDeductions;
+            }
+            else
+            {
+                deduction.Id = deductions.ToArray().Length;
+                deductions.Add(deduction);
+                salesTempTicketModel.Deductions = deductions;
+            }
+            decimal currentPrice = salesTempTicketModel.CurrentPrice;
+            currentPrice = currentPrice - (Decimal)tarrifReduction;
+            if (currentPrice < 0)
+            {
+                currentPrice = 0;
+            }
+            salesTempTicketModel.CurrentPrice = currentPrice;
+            TempData["salesTempTicketModel"] = salesTempTicketModel;
             return View("DisplayTempReservation", salesTempTicketModel);
         }
 
+        // REMOVE DEDUCTION FROM DEDUCTIONS
         [HttpGet]
-        public ViewResult Deduction(SalesTempTicketModel salesTempTicketModel)
+        public ViewResult RemoveDeduction(int id)
         {
-            return View(salesTempTicketModel);
+            SalesTempTicketModel salesTempTicketModel = (SalesTempTicketModel)TempData["salesTempTicketModel"];
+            List<Deduction> deductions = salesTempTicketModel.Deductions;
+            Deduction deduction = deductions.Single(x => x.Id == id);
+            deductions.Remove(deduction);
+            salesTempTicketModel.Deductions = deductions;
+            decimal currentPrice = salesTempTicketModel.TotalPrice;
+            foreach (var item in salesTempTicketModel.Deductions)
+            {
+                currentPrice = currentPrice - item.Amount;
+            }
+            if (currentPrice < 0)
+            {
+                currentPrice = 0;
+            }
+            salesTempTicketModel.CurrentPrice = currentPrice;
+            TempData["salesTempTicketModel"] = salesTempTicketModel;
+            return View("DisplayTempReservation", salesTempTicketModel);
         }
+
+
     }
 }
