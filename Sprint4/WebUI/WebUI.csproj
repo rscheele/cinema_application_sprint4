@@ -326,9 +326,9 @@
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\SalesTicketController.cs" />
     <Compile Include="Controllers\SubscriptionController.cs" />
-    <Compile Include="Migrations\201805151551489_role.cs" />
-    <Compile Include="Migrations\201805151551489_role.Designer.cs">
-      <DependentUpon>201805151551489_role.cs</DependentUpon>
+    <Compile Include="Migrations\201806130855239_role.cs" />
+    <Compile Include="Migrations\201806130855239_role.Designer.cs">
+      <DependentUpon>201806130855239_role.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -474,8 +474,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805151551489_role.resx">
-      <DependentUpon>201805151551489_role.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806130855239_role.resx">
+      <DependentUpon>201806130855239_role.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -49,9 +49,8 @@ namespace WebUI.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "Gebruikersnaam")]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

@@ -1026,7 +1026,7 @@ namespace Domain.Concrete
             new Show{BeginTime=DateTime.Parse("2018-05-28 14:45:00.000"),EndTime=DateTime.Parse("2018-05-28 16:55:00.000"),MovieID=3,RoomID=3,NumberofTickets=0, ShowType=0},
             new Show{BeginTime=DateTime.Parse("2018-05-28 19:11:00.000"),EndTime=DateTime.Parse("2018-05-28 21:11:00.000"),MovieID=4,RoomID=4,NumberofTickets=0, ShowType=0},
             new Show{BeginTime=DateTime.Parse("2018-05-28 19:00:00.000"),EndTime=DateTime.Parse("2018-05-28 21:00:00.000"),MovieID=5,RoomID=5,NumberofTickets=0, ShowType=0},
-            new Show{BeginTime=DateTime.Parse("2018-06-11 19:00:00.000"),EndTime=DateTime.Parse("2018-06-11 21:00:00.000"),MovieID=6,RoomID=6,NumberofTickets=0, ShowType=0},
+            new Show{BeginTime=DateTime.Parse("2018-06-12 19:00:00.000"),EndTime=DateTime.Parse("2018-06-12 21:00:00.000"),MovieID=6,RoomID=6,NumberofTickets=0, ShowType=0},
             new Show{BeginTime=DateTime.Parse("2018-05-16 21:15:00.000"),EndTime=DateTime.Parse("2018-05-16 23:15:00.000"),MovieID=7,RoomID=1,NumberofTickets=0, ShowType=0},
             new Show{BeginTime=DateTime.Parse("2018-05-16 18:15:00.000"),EndTime=DateTime.Parse("2018-05-16 20:30:00.000"),MovieID=8,RoomID=2,NumberofTickets=0, ShowType=0},
             new Show{BeginTime=DateTime.Parse("2018-05-16 21:15:00.000"),EndTime=DateTime.Parse("2018-05-16 22:30:00.000"),MovieID=5,RoomID=5,NumberofTickets=0, ShowType=0},
