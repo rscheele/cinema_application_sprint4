@@ -10,6 +10,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
+    [Authorize(Roles = "Kassa")]
     public class SalesTicketController : Controller
     {
         private IMovieOverviewRepository movieRepository;

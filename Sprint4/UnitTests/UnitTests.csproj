@@ -188,6 +188,8 @@
     <Compile Include="TestReservation.cs" />
     <Compile Include="TestUpcomingShows.cs" />
     <Compile Include="TestTicketPrices.cs" />
+    <Compile Include="TestEnquete.cs" />
+    <Compile Include="TestEmployeeName.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -1,0 +1,7 @@
+F:\Sprint4\Sprint4\.vs\Sprint4\lut\0\b\Domain\bin\Debug\ApplicationInsights.config
+F:\Sprint4\Sprint4\.vs\Sprint4\lut\0\b\Domain\bin\Debug\Domain.dll.config
+F:\Sprint4\Sprint4\.vs\Sprint4\lut\0\b\Domain\bin\Debug\Domain.dll
+F:\Sprint4\Sprint4\.vs\Sprint4\lut\0\i\Domain\Debug\Domain.csprojAssemblyReference.cache
+F:\Sprint4\Sprint4\.vs\Sprint4\lut\0\i\Domain\Debug\Domain.csproj.CoreCompileInputs.cache
+F:\Sprint4\Sprint4\.vs\Sprint4\lut\0\i\Domain\Debug\Domain.csproj.CopyComplete
+F:\Sprint4\Sprint4\.vs\Sprint4\lut\0\i\Domain\Debug\Domain.dll
