@@ -127,3 +127,4 @@ F:\Sprint4\Sprint4\UnitTests\bin\Debug\roslyn\vbc.exe.config
 F:\Sprint4\Sprint4\UnitTests\bin\Debug\roslyn\vbc.rsp
 F:\Sprint4\Sprint4\UnitTests\bin\Debug\roslyn\VBCSCompiler.exe
 F:\Sprint4\Sprint4\UnitTests\bin\Debug\roslyn\VBCSCompiler.exe.config
+D:\sprint4\Sprint4\UnitTests\obj\Debug\UnitTests.csproj.CoreCompileInputs.cache
